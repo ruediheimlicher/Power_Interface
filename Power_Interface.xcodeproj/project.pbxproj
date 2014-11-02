@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BDF38B1D1A068CD000BB76C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF38B1C1A068CD000BB76C6 /* AppDelegate.swift */; };
+		BDF38B1F1A068CD000BB76C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF38B1E1A068CD000BB76C6 /* ViewController.swift */; };
+		BDF38B211A068CD000BB76C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF38B201A068CD000BB76C6 /* Images.xcassets */; };
+		BDF38B241A068CD000BB76C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF38B221A068CD000BB76C6 /* Main.storyboard */; };
+		BDF38B301A068CD000BB76C6 /* Power_InterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF38B2F1A068CD000BB76C6 /* Power_InterfaceTests.swift */; };
+		BDF38B451A068E2100BB76C6 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = BDF38B421A068E2100BB76C6 /* hid.c */; };
+		BDF38B461A068E2100BB76C6 /* usb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF38B441A068E2100BB76C6 /* usb.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDF38B2A1A068CD000BB76C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDF38B0F1A068CD000BB76C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDF38B161A068CD000BB76C6;
+			remoteInfo = Power_Interface;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BDF38B171A068CD000BB76C6 /* Power_Interface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Power_Interface.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF38B1B1A068CD000BB76C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDF38B1C1A068CD000BB76C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BDF38B1E1A068CD000BB76C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BDF38B201A068CD000BB76C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BDF38B231A068CD000BB76C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BDF38B291A068CD000BB76C6 /* Power_InterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Power_InterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF38B2E1A068CD000BB76C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDF38B2F1A068CD000BB76C6 /* Power_InterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Power_InterfaceTests.swift; sourceTree = "<group>"; };
+		BDF38B3E1A068DB900BB76C6 /* USBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USBController.h; path = Power_Interface/USBController.h; sourceTree = "<group>"; };
+		BDF38B3F1A068DEB00BB76C6 /* Power_Interface-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Power_Interface-Bridging-Header.h"; sourceTree = "<group>"; };
+		BDF38B421A068E2100BB76C6 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
+		BDF38B431A068E2100BB76C6 /* hid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hid.h; sourceTree = "<group>"; };
+		BDF38B441A068E2100BB76C6 /* usb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = usb.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDF38B141A068CD000BB76C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDF38B261A068CD000BB76C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDF38B0E1A068CD000BB76C6 = {
+			isa = PBXGroup;
+			children = (
+				BDF38B3E1A068DB900BB76C6 /* USBController.h */,
+				BDF38B191A068CD000BB76C6 /* Power_Interface */,
+				BDF38B2C1A068CD000BB76C6 /* Power_InterfaceTests */,
+				BDF38B181A068CD000BB76C6 /* Products */,
+				BDF38B3F1A068DEB00BB76C6 /* Power_Interface-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		BDF38B181A068CD000BB76C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDF38B171A068CD000BB76C6 /* Power_Interface.app */,
+				BDF38B291A068CD000BB76C6 /* Power_InterfaceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDF38B191A068CD000BB76C6 /* Power_Interface */ = {
+			isa = PBXGroup;
+			children = (
+				BDF38B421A068E2100BB76C6 /* hid.c */,
+				BDF38B431A068E2100BB76C6 /* hid.h */,
+				BDF38B441A068E2100BB76C6 /* usb.swift */,
+				BDF38B1C1A068CD000BB76C6 /* AppDelegate.swift */,
+				BDF38B1E1A068CD000BB76C6 /* ViewController.swift */,
+				BDF38B201A068CD000BB76C6 /* Images.xcassets */,
+				BDF38B221A068CD000BB76C6 /* Main.storyboard */,
+				BDF38B1A1A068CD000BB76C6 /* Supporting Files */,
+			);
+			path = Power_Interface;
+			sourceTree = "<group>";
+		};
+		BDF38B1A1A068CD000BB76C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDF38B1B1A068CD000BB76C6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDF38B2C1A068CD000BB76C6 /* Power_InterfaceTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDF38B2F1A068CD000BB76C6 /* Power_InterfaceTests.swift */,
+				BDF38B2D1A068CD000BB76C6 /* Supporting Files */,
+			);
+			path = Power_InterfaceTests;
+			sourceTree = "<group>";
+		};
+		BDF38B2D1A068CD000BB76C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDF38B2E1A068CD000BB76C6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDF38B161A068CD000BB76C6 /* Power_Interface */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDF38B331A068CD000BB76C6 /* Build configuration list for PBXNativeTarget "Power_Interface" */;
+			buildPhases = (
+				BDF38B131A068CD000BB76C6 /* Sources */,
+				BDF38B141A068CD000BB76C6 /* Frameworks */,
+				BDF38B151A068CD000BB76C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Power_Interface;
+			productName = Power_Interface;
+			productReference = BDF38B171A068CD000BB76C6 /* Power_Interface.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BDF38B281A068CD000BB76C6 /* Power_InterfaceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDF38B361A068CD000BB76C6 /* Build configuration list for PBXNativeTarget "Power_InterfaceTests" */;
+			buildPhases = (
+				BDF38B251A068CD000BB76C6 /* Sources */,
+				BDF38B261A068CD000BB76C6 /* Frameworks */,
+				BDF38B271A068CD000BB76C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDF38B2B1A068CD000BB76C6 /* PBXTargetDependency */,
+			);
+			name = Power_InterfaceTests;
+			productName = Power_InterfaceTests;
+			productReference = BDF38B291A068CD000BB76C6 /* Power_InterfaceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDF38B0F1A068CD000BB76C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Ruedi Heimlicher";
+				TargetAttributes = {
+					BDF38B161A068CD000BB76C6 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					BDF38B281A068CD000BB76C6 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = BDF38B161A068CD000BB76C6;
+					};
+				};
+			};
+			buildConfigurationList = BDF38B121A068CD000BB76C6 /* Build configuration list for PBXProject "Power_Interface" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BDF38B0E1A068CD000BB76C6;
+			productRefGroup = BDF38B181A068CD000BB76C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDF38B161A068CD000BB76C6 /* Power_Interface */,
+				BDF38B281A068CD000BB76C6 /* Power_InterfaceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDF38B151A068CD000BB76C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF38B211A068CD000BB76C6 /* Images.xcassets in Resources */,
+				BDF38B241A068CD000BB76C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDF38B271A068CD000BB76C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDF38B131A068CD000BB76C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF38B451A068E2100BB76C6 /* hid.c in Sources */,
+				BDF38B1F1A068CD000BB76C6 /* ViewController.swift in Sources */,
+				BDF38B461A068E2100BB76C6 /* usb.swift in Sources */,
+				BDF38B1D1A068CD000BB76C6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDF38B251A068CD000BB76C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF38B301A068CD000BB76C6 /* Power_InterfaceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDF38B2B1A068CD000BB76C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDF38B161A068CD000BB76C6 /* Power_Interface */;
+			targetProxy = BDF38B2A1A068CD000BB76C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BDF38B221A068CD000BB76C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF38B231A068CD000BB76C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BDF38B311A068CD000BB76C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BDF38B321A068CD000BB76C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BDF38B341A068CD000BB76C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Power_Interface/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Power_Interface-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BDF38B351A068CD000BB76C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Power_Interface/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Power_Interface-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		BDF38B371A068CD000BB76C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Power_InterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Power_Interface.app/Contents/MacOS/Power_Interface";
+			};
+			name = Debug;
+		};
+		BDF38B381A068CD000BB76C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Power_InterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Power_Interface.app/Contents/MacOS/Power_Interface";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDF38B121A068CD000BB76C6 /* Build configuration list for PBXProject "Power_Interface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF38B311A068CD000BB76C6 /* Debug */,
+				BDF38B321A068CD000BB76C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDF38B331A068CD000BB76C6 /* Build configuration list for PBXNativeTarget "Power_Interface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF38B341A068CD000BB76C6 /* Debug */,
+				BDF38B351A068CD000BB76C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BDF38B361A068CD000BB76C6 /* Build configuration list for PBXNativeTarget "Power_InterfaceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF38B371A068CD000BB76C6 /* Debug */,
+				BDF38B381A068CD000BB76C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDF38B0F1A068CD000BB76C6 /* Project object */;
+}
