@@ -36,7 +36,6 @@
 		BDF38B291A068CD000BB76C6 /* Power_InterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Power_InterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF38B2E1A068CD000BB76C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDF38B2F1A068CD000BB76C6 /* Power_InterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Power_InterfaceTests.swift; sourceTree = "<group>"; };
-		BDF38B3E1A068DB900BB76C6 /* USBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USBController.h; path = Power_Interface/USBController.h; sourceTree = "<group>"; };
 		BDF38B3F1A068DEB00BB76C6 /* Power_Interface-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Power_Interface-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDF38B421A068E2100BB76C6 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
 		BDF38B431A068E2100BB76C6 /* hid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hid.h; sourceTree = "<group>"; };
@@ -64,7 +63,6 @@
 		BDF38B0E1A068CD000BB76C6 = {
 			isa = PBXGroup;
 			children = (
-				BDF38B3E1A068DB900BB76C6 /* USBController.h */,
 				BDF38B191A068CD000BB76C6 /* Power_Interface */,
 				BDF38B2C1A068CD000BB76C6 /* Power_InterfaceTests */,
 				BDF38B181A068CD000BB76C6 /* Products */,
@@ -416,6 +414,7 @@
 				BDF38B351A068CD000BB76C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BDF38B361A068CD000BB76C6 /* Build configuration list for PBXNativeTarget "Power_InterfaceTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +423,7 @@
 				BDF38B381A068CD000BB76C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

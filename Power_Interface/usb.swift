@@ -13,6 +13,7 @@ import Darwin
 public class usb_teensy: NSObject
 {
    var hid_usbstatus: Int32 = 0
+   var usb_count: UInt8 = 0
    
    var read_byteArray = [UInt8](count: 64, repeatedValue: 0x00)
    var last_read_byteArray = [UInt8](count: 64, repeatedValue: 0x00)
@@ -21,6 +22,8 @@ public class usb_teensy: NSObject
    var testArray: Array<UInt8>  = [0xAB,0xDC,0x69,0x66,0x74,0x73,0x6f,0x64,0x61]
    
    var read_OK:ObjCBool = false
+   
+   var new_Data:ObjCBool = false
    
    var manustring:String = ""
    var prodstring:String = ""
@@ -89,6 +92,8 @@ public class usb_teensy: NSObject
    {
       return prodstring
    }
+   
+   
 
    
    
@@ -111,7 +116,7 @@ public class usb_teensy: NSObject
       var timerDic:NSMutableDictionary  = ["count": 0]
       
       
-      var result = rawhid_recv(0, &read_byteArray, 32, 50);
+      var result = rawhid_recv(0, &read_byteArray, 64, 50);
       
       println("*start_read_USB result: \(result)")
       //println("read_byteArray nach: *\(read_byteArray)*")
@@ -119,7 +124,7 @@ public class usb_teensy: NSObject
       var somethingToPass = "It worked in teensy_send_USB"
       
       var timer : NSTimer? = nil
-      timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("cont_read_USB:"), userInfo: timerDic, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("cont_read_USB:"), userInfo: timerDic, repeats: true)
       
       return timerDic as NSDictionary
    }
@@ -129,11 +134,13 @@ public class usb_teensy: NSObject
    {
       if (read_OK)
    {
-         var tempbyteArray = [UInt8](count: 64, repeatedValue: 0x00)
-         var result = rawhid_recv(0, &last_read_byteArray, 32, 50)
+         //var tempbyteArray = [UInt8](count: 64, repeatedValue: 0x00)
+         var result = rawhid_recv(0, &read_byteArray, 64, 50)
+         //println("*cont_read_USB result: \(result)")
          //println("tempbyteArray in Timer: *\(tempbyteArray)*")
          // var timerdic: [String: Int]
-         
+      
+      /*
          if  var dic = timer.userInfo as? NSMutableDictionary
          {
             if var count:Int = timer.userInfo?["count"] as? Int
@@ -142,19 +149,33 @@ public class usb_teensy: NSObject
                dic["count"] = count
                //dic["nr"] = count+2
                //println(dic)
+               usb_count += 1
             }
          }
-         
-         let timerdic:Dictionary<String,Int!> = timer.userInfo as Dictionary<String,Int!>
+        */
+   //      let timerdic:Dictionary<String,Int!> = timer.userInfo as Dictionary<String,Int!>
          //let messageString = userInfo["message"]
-         var tempcount = timerdic["count"]!
+  //       var tempcount = timerdic["count"]!
          
          //timer.userInfo["count"] = tempcount + 1
          
-         
-         
-         
-         
+      //print("+++ new read_byteArray in Timer:")
+      /*
+      for  i in 0...12
+      {
+         print(" \(read_byteArray[i])")
+      }
+      println()
+      for  i in 0...12
+      {
+         print(" \(last_read_byteArray[i])")
+      }
+      println()
+      println()
+      */
+      
+      
+      
          //timerdic["count"] = 2
          
          // var count:Int = timerdic["count"]
@@ -162,14 +183,16 @@ public class usb_teensy: NSObject
          //timer.userInfo["count"] = count+1
          if !(last_read_byteArray == read_byteArray)
          {
-            read_byteArray = last_read_byteArray
+            last_read_byteArray = read_byteArray
+            new_Data = true
             
             print("+++ new read_byteArray in Timer:")
-            for  i in 0...4
+            for  i in 0...16
             {
                print(" \(read_byteArray[i])")
             }
             println()
+            
             
          }
          //println("*read_USB in Timer result: \(result)")
@@ -188,20 +211,22 @@ public class usb_teensy: NSObject
    {
       // http://www.swiftsoda.com/swift-coding/get-bytes-from-nsdata/
       // Test Array to generate some Test Data
-      var testData = NSData(bytes: testArray,length: testArray.count)
+    //  var testData = NSData(bytes: testArray,length: testArray.count)
       
-      write_byteArray[0] = testArray[0]
-      write_byteArray[1] = testArray[1]
-      write_byteArray[2] = testArray[2]
+      //write_byteArray[0] = testArray[0]
+      //write_byteArray[1] = testArray[1]
+      //write_byteArray[2] = testArray[2]
+     // write_byteArray[3] = usb_count
+      
          
-      testArray[0] += 1
-      testArray[1] += 1
-      testArray[2] += 1
+     // testArray[0] += 1
+     // testArray[1] += 1
+     // testArray[2] += 1
 
          //println("write_byteArray: \(write_byteArray)")
          print("new write_byteArray in send_USB: ")
 
-         for  i in 0...3
+         for  i in 0...16
          {
             print(" \(write_byteArray[i])")
          }
@@ -224,6 +249,7 @@ public class usb_teensy: NSObject
       
    }
  
+   //public func read_byteArray()->
 
    
    public func rep_read_USB(inTimer: NSTimer)
