@@ -66,18 +66,18 @@ class ViewController: NSViewController
       
       //      let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("tester:"), userInfo: somethingToPass, repeats: true)
       var timer : NSTimer? = nil
-      timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("store_read_USB:"), userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("cont_read_USB:"), userInfo: nil, repeats: true)
 
    }
    
-   func store_read_USB(timer: NSTimer)
+   func cont_read_USB(timer: NSTimer)
    {
       if (usb_read_OK)
       {
          if (teensy.new_Data)
          {
-            let a1: UInt8 = teensy.last_read_byteArray[8]
-            let a2: UInt8 = teensy.last_read_byteArray[9]
+            let a1: UInt8 = teensy.last_read_byteArray[10]
+            let a2: UInt8 = teensy.last_read_byteArray[11]
             
             let b1: Int32 = Int32(a1)
             let b2: Int32 = Int32(a2)
