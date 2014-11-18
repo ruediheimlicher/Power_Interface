@@ -38,13 +38,17 @@ class ViewController: NSViewController
    
    @IBOutlet weak var L_Feld: NSTextField!
    
+   @IBOutlet weak var spannung: NSSlider!
+   
    override func viewDidLoad()
    {
       super.viewDidLoad()
       
       let xy = Hello()
-      USB_OK.backgroundColor = NSColor.whiteColor()
+      USB_OK.backgroundColor = NSColor.greenColor()
       // Do any additional setup after loading the view.
+      
+      //spannung.numberOfTickMarks = 16
    }
    
    func tester(timer: NSTimer)
@@ -82,11 +86,18 @@ class ViewController: NSViewController
             let b1: Int32 = Int32(a1)
             let b2: Int32 = Int32(a2)
             
-            H_Feld.intValue = b2
-            L_Feld.intValue = b1
+            //H_Feld.intValue = b2
+            H_Feld.stringValue = NSString(format:"%2X", a2)
+            
+            //L_Feld.intValue = b1
+            L_Feld.stringValue = NSString(format:"%2X", a1)
             
             let rotA:Int32 = b1 + (0xFF * b2)
+            //inputFeld.stringValue = NSString(format:"%2X", rotA)
             inputFeld.intValue = Int32(rotA)
+            
+            
+            spannung.intValue = Int32(rotA )
             
             teensy.new_Data = false
          }
@@ -265,7 +276,7 @@ class ViewController: NSViewController
       */
       
       var timer : NSTimer? = nil
-      timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("cont_write_USB:"), userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("cont_write_USB:"), userInfo: nil, repeats: true)
 
    }
    
@@ -273,9 +284,9 @@ class ViewController: NSViewController
  {
     if (usb_read_OK)
     {
-      NSBeep()
-      teensy.write_byteArray[0] = UInt8(codeFeld.intValue)
-      teensy.write_byteArray[1] = UInt8(dataFeld.intValue)
+      //NSBeep()
+      teensy.write_byteArray[0] = UInt8((codeFeld.intValue)%0xff)
+      teensy.write_byteArray[1] = UInt8((dataFeld.intValue)%0xff)
       
       var c0 = codeFeld.intValue + 1
       codeFeld.intValue = c0

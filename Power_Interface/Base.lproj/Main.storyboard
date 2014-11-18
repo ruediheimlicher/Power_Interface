@@ -683,7 +683,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-zB-uoZ">
-                                <rect key="frame" x="81" y="77" width="249" height="22"/>
+                                <rect key="frame" x="81" y="77" width="223" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ZwC-q4-zy7">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -814,6 +814,10 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zF4-Ca-uFa">
+                                <rect key="frame" x="315" y="30" width="26" height="160"/>
+                                <sliderCell key="cell" alignment="left" maxValue="65535" tickMarkPosition="right" numberOfTickMarks="6" sliderType="linear" id="ppc-K5-UVz"/>
+                            </slider>
                         </subviews>
                     </view>
                     <connections>
@@ -826,6 +830,7 @@
                         <outlet property="dataFeld" destination="sbd-dE-ext" id="KM8-oj-Ec2"/>
                         <outlet property="inputFeld" destination="6Tu-zB-uoZ" id="Eev-00-eqn"/>
                         <outlet property="manufactorer" destination="x5B-wP-Shf" id="sqR-I0-K4M"/>
+                        <outlet property="spannung" destination="zF4-Ca-uFa" id="lK9-5e-lp8"/>
                         <outlet property="start_read_USB_Knopf" destination="nd5-J8-dDu" id="T3X-ej-iKL"/>
                     </connections>
                 </viewController>
