@@ -118,7 +118,7 @@ public class usb_teensy: NSObject
       
       var result = rawhid_recv(0, &read_byteArray, 64, 50);
       
-      println("*start_read_USB result: \(result)")
+      println("*report_start_read_USB result: \(result)")
       //println("read_byteArray nach: *\(read_byteArray)*")
    
       var somethingToPass = "It worked in teensy_send_USB"
@@ -230,10 +230,12 @@ public class usb_teensy: NSObject
          {
             print(" \(write_byteArray[i])")
          }
-         println()
+      
 
          var senderfolg = rawhid_send(0,&write_byteArray, 64, 50)
 
+      print("\tsenderfolg: \(senderfolg)")
+      println()
          if hid_usbstatus == 0
       {
          
