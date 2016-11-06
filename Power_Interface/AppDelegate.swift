@@ -7,16 +7,25 @@
 //
 
 import Cocoa
+import AVFoundation
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate , NSWindowDelegate
 {
    
+   //var beepPlayer:AVAudioPlayer
+   
+   
+ 
    @IBOutlet weak var  Fenster: NSViewController!
    func applicationDidFinishLaunching(aNotification: NSNotification)
    {
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: "fertigAktion:", name: "NSWindowWillCloseNotification", object: nil)
-      // Insert code here to initialize your application
+      // http://stackoverflow.com/questions/26698481/change-userinfo-in-timer-selector-function-in-swift?rq=1
+      var beeppfad = NSBundle.mainBundle()
+      //println("beeppfad: \(beeppfad)")
+      
+      
       
       
       var fensterArray  = NSApplication.sharedApplication().windows
@@ -28,12 +37,14 @@ class AppDelegate: NSObject, NSApplicationDelegate , NSWindowDelegate
       var farbe:NSColor = NSColor(red: 200/255, green: 235/255, blue: 210/255, alpha: 1.0)
       hauptfenster.backgroundColor = farbe
       
-      var wc = fensterArray[0].windowController() as NSWindowController
+      var wc = fensterArray[0].windowController!as NSWindowController
 
       //  println(a)
       // http://stackoverflow.com/questions/6633168/passing-data-from-viewcontroller-to-appdelegate
    //   NSApplication.sharedApplication().sendAction("start_read_USB:", to: nil, from: self)
-      
+     
+
+   
    }
    
 
@@ -63,12 +74,6 @@ class AppDelegate: NSObject, NSApplicationDelegate , NSWindowDelegate
       
       
       NSApplication.sharedApplication().terminate(self)
-      return true
-   }
-
-   func windowWillClose(sender: AnyObject)-> Bool
-   {
-      //NSLog("Will Schliessen")
       return true
    }
 

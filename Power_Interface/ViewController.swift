@@ -7,8 +7,10 @@
 //
 
 import Cocoa
+import AVFoundation
 
-class ViewController: NSViewController
+
+class ViewController: NSViewController 
 {
    
    // var  myUSBController:USBController
@@ -31,20 +33,23 @@ class ViewController: NSViewController
    
    @IBOutlet weak var inputFeld: NSTextField!
    
-   @IBOutlet weak var USB_OK: NSOutlineView!
+   @IBOutlet weak var USB_OK: NSTextField!
    
-   @IBOutlet weak var start_read_USB_Knopf: NSButtonCell!
-   
+   @IBOutlet weak var start_read_USB_Knopf: NSButton!
    @IBOutlet weak var stop_read_USB_Knopf: NSButton!
-   @IBOutlet weak var start_write_USB_Knopf: NSButton!
    
+   @IBOutlet weak var start_write_USB_Knopf: NSButton!
    @IBOutlet weak var stop_write_USB_Knopf: NSButton!
+   
+   
    @IBOutlet weak var codeFeld: NSTextField!
    
    @IBOutlet weak var data0: NSTextField!
    
    @IBOutlet weak var data1: NSTextField!
    
+   @IBOutlet  var input: NSTextView!
+
    @IBOutlet weak var data2: NSTextField!
    @IBOutlet weak var data3: NSTextField!
    
@@ -81,13 +86,15 @@ class ViewController: NSViewController
    }
    @IBAction func controlDidChange(sender: AnyObject)
    {
-      println("controlDidChange: \(sender.doubleValue)")
+      print("controlDidChange: \(sender.doubleValue)")
       self.update_extspannung(sender.doubleValue)
+      self.setSpannung()
    }
    
    
    @IBAction func sendSpannung(sender: AnyObject)
    {
+ 
       var formatter = NSNumberFormatter()
       var tempspannung:Double  = extspannungFeld.doubleValue * 100
       if (tempspannung > 3000)
@@ -96,14 +103,14 @@ class ViewController: NSViewController
          
         
       }
-      extspannungFeld.doubleValue = ((tempspannung/100)+1)%12
+//      extspannungFeld.doubleValue = ((tempspannung/100)+1)%12
       var tempintspannung = UInt16(tempspannung)
       //NSString(format:"%2X", a2)
-      spL.stringValue = NSString(format:"%02X", (tempintspannung & 0x00FF))
-      spH.stringValue = NSString(format:"%02X", ((tempintspannung & 0xFF00)>>8))
-      println("tempintspannung: \(spL.stringValue)\ttempintspannung: \(spH.stringValue) ")
+      spL.stringValue = NSString(format:"%02X", (tempintspannung & 0x00FF)) as String
+      spH.stringValue = NSString(format:"%02X", ((tempintspannung & 0xFF00)>>8)) as String
+      print("tempintspannung L: \(spL.stringValue)\ttempintspannung H: \(spH.stringValue) ")
       teensy.write_byteArray[0] = 0x01
-      println("write_byteArray 0: \(teensy.write_byteArray[0])")
+      print("write_byteArray 0: \(teensy.write_byteArray[0])")
       teensy.write_byteArray[1] = UInt8(tempintspannung & (0x00FF))
       teensy.write_byteArray[2] = UInt8((tempintspannung & (0xFF00))>>8)
       
@@ -111,6 +118,37 @@ class ViewController: NSViewController
       teensy.write_byteArray[0] = 0x00 // bit 0 zuruecksetzen
       //senderfolg = teensy.send_USB()
    }
+ 
+   func setSpannung()
+   {
+      var beepSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("beep", ofType: "aif")!)
+      
+      
+      var formatter = NSNumberFormatter()
+      var tempspannung:Double  = extspannungFeld.doubleValue * 100
+      if (tempspannung > 3000)
+      {
+         tempspannung = 3000
+         
+         
+      }
+      //      extspannungFeld.doubleValue = ((tempspannung/100)+1)%12
+      var tempintspannung = UInt16(tempspannung)
+      //NSString(format:"%2X", a2)
+      spL.stringValue = NSString(format:"%02X", (tempintspannung & 0x00FF)) as String
+      spH.stringValue = NSString(format:"%02X", ((tempintspannung & 0xFF00)>>8)) as String
+      print("tempintspannung L: \(spL.stringValue)\ttempintspannung H: \(spH.stringValue) ")
+      teensy.write_byteArray[0] = 0x01
+      print("write_byteArray 0: \(teensy.write_byteArray[0])")
+      teensy.write_byteArray[1] = UInt8(tempintspannung & (0x00FF))
+      teensy.write_byteArray[2] = UInt8((tempintspannung & (0xFF00))>>8)
+      
+      var senderfolg = teensy.send_USB()
+      teensy.write_byteArray[0] = 0x00 // bit 0 zuruecksetzen
+      //senderfolg = teensy.send_USB()
+   }
+
+   
    
    @IBAction func sendStrom(sender: AnyObject)
    {
@@ -122,14 +160,14 @@ class ViewController: NSViewController
          
       }
       var ired = NSString(format:"%2.2f", tempstrom/100)
-      extstrom.stringValue = ired
+      extstrom.stringValue = ired as String
       var tempintstrom = UInt16(tempstrom)
       //NSString(format:"%2X", a2)
-      spL.stringValue = NSString(format:"%02X", (tempintstrom & 0x00FF))
-      spH.stringValue = NSString(format:"%02X", ((tempintstrom & 0xFF00)>>8))
-      println("tempintstrom L: \(spL.stringValue)\ttempintstrom H: \(spH.stringValue) ")
+      spL.stringValue = NSString(format:"%02X", (tempintstrom & 0x00FF)) as String
+      spH.stringValue = NSString(format:"%02X", ((tempintstrom & 0xFF00)>>8)) as String
+      print("tempintstrom L: \(spL.stringValue)\ttempintstrom H: \(spH.stringValue) ")
       teensy.write_byteArray[0] = 0x02
-      println("write_byteArray 0: \(teensy.write_byteArray[0])")
+      print("write_byteArray 0: \(teensy.write_byteArray[0])")
       teensy.write_byteArray[1] = UInt8(tempintstrom & (0x00FF))
       teensy.write_byteArray[2] = UInt8((tempintstrom & (0xFF00))>>8)
       
@@ -143,36 +181,86 @@ class ViewController: NSViewController
    {
       super.viewDidLoad()
       
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: "USBfertigAktion:", name: "NSWindowWillCloseNotification", object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.USBfertigAktion(_:)), name: "NSWindowWillCloseNotification", object: nil)
 
       let xy = Hello()
-      USB_OK.backgroundColor = NSColor.lightGrayColor()
+     // USB_OK.backgroundColor = NSColor.yellowColor()
+      USB_OK.textColor = NSColor.yellowColor()
+       USB_OK.stringValue = "?";
       // Do any additional setup after loading the view.
       
       //spannungsanzeige.numberOfTickMarks = 16
+      extspannungFeld.doubleValue = 5.0
+      extspannungStepper.doubleValue = 5.0
    }
    
    
    func USBfertigAktion(sender: AnyObject)-> Bool
    {
       NSLog("USBfertigAktion will schliessen")
+      
+      
       teensycode &= ~(1<<7)
       teensy.write_byteArray[15] = teensycode
       teensy.write_byteArray[0] |= UInt8(Teensy_Status.intValue)
       teensy.write_byteArray[1] = UInt8(data0.intValue)
-      var senderfolg = teensy.send_USB()
+      let senderfolg = teensy.send_USB()
       if (senderfolg > 0)
       {
       return true
       }
       return false
    }
+   
+   
+   @IBAction func startU_Funktion(sender: NSButton)
+   {
+      let timerDic:NSMutableDictionary = ["delta": 1.0]
+      var timer : NSTimer? = nil
+      timer = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: Selector("cont_U_Funktion:"), userInfo: timerDic, repeats: true)
 
+   }
+
+   func cont_U_Funktion(timer: NSTimer)
+   {
+      
+      var aktspannung:Double  = extspannungFeld.doubleValue
+      if let timerDic = timer.userInfo as? NSMutableDictionary
+      {
+         var delta = timerDic["delta"] as? Int
+         if (extspannungFeld.doubleValue == 10 )
+         {
+            delta! *= (-1)
+            timerDic["delta"] = delta!
+         }
+         else if (extspannungFeld.doubleValue == 0 )
+         {
+            delta! = 1
+            timerDic["delta"] = delta!
+         }
+         aktspannung += Double(delta!)
+         extspannungFeld.doubleValue = (aktspannung )
+         
+         print("aktspannung: \(aktspannung)")
+         teensy.write_byteArray[0] = 0x01
+         //println("write_byteArray 0: \(teensy.write_byteArray[0])")
+         aktspannung *= 100
+         let sendspannung:Int = Int(aktspannung)
+         teensy.write_byteArray[1] = UInt8(sendspannung*100 & (0x00FF))
+         teensy.write_byteArray[2] = UInt8((sendspannung & (0xFF00))>>8)
+         print("write_byteArray 1: \(teensy.write_byteArray[1])\t 2: \(teensy.write_byteArray[2])")
+         var senderfolg = teensy.send_USB()
+         teensy.write_byteArray[0] = 0x00 // bit 0 zuruecksetzen
+
+      }
+      
+   }
+   
    
    func tester(timer: NSTimer)
    {
-      let theStringToPrint = timer.userInfo as String
-      println(theStringToPrint)
+      let theStringToPrint = timer.userInfo as! String
+      print(theStringToPrint)
    }
    
    
@@ -193,6 +281,7 @@ class ViewController: NSViewController
       else
       {
          sender.title = "Teensy OFF"
+         teensy.read_OK = false;
          //teensy.write_byteArray[15] = 0
          teensycode &= ~(1<<7)
          teensy.write_byteArray[15] = teensycode
@@ -205,7 +294,7 @@ class ViewController: NSViewController
    
    @IBAction func start_read_USB(sender: AnyObject)
    {
-      println("start_read_USB")
+      print("start_read_USB")
       //myUSBController.startRead(1)
       teensy.start_read_USB()
       usb_read_cont = true // cont_Read wird aktiviert
@@ -216,7 +305,9 @@ class ViewController: NSViewController
       
       //      let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("tester:"), userInfo: somethingToPass, repeats: true)
       var timer : NSTimer? = nil
-      timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("cont_read_USB:"), userInfo: nil, repeats: true)
+      
+      // Auslesen der Ergebnisse in teensy
+      timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.cont_read_USB(_:)), userInfo: nil, repeats: true)
 
    }
    
@@ -224,21 +315,30 @@ class ViewController: NSViewController
    {
       if (usb_read_cont)
       {
+         //NSBeep()
          if (teensy.new_Data)
          {
-            let a1: UInt8 = teensy.last_read_byteArray[10]
-            let a2: UInt8 = teensy.last_read_byteArray[11]
+            NSBeep()
+            let a1: UInt8 = teensy.last_read_byteArray[6]
+            let a2: UInt8 = teensy.last_read_byteArray[7]
+            
+  //          var data = NSData(bytes: teensy.last_read_byteArray, length: 32)
+            
+  //          print("\(data)")
+            
+           // let inputstring = teensy.last_read_byteArray as NSArray
             
             let b1: Int32 = Int32(a1)
             let b2: Int32 = Int32(a2)
-            
             //H_Feld.intValue = b2
-            H_Feld.stringValue = NSString(format:"%2X", a2)
+            H_Feld.stringValue = NSString(format:"%2X", a2) as String
+           // H_Feld.stringValue = NSString(format:"%d", a2)
             
             //L_Feld.intValue = b1
-            L_Feld.stringValue = NSString(format:"%2X", a1)
+           L_Feld.stringValue = NSString(format:"%2X", a1) as String
+           // L_Feld.stringValue = NSString(format:"%d", a1)
             
-            let rotA:Int32 = b1 + (0xFF * b2)
+            let rotA:Int32 = (b1 | (b2<<8))
             //inputFeld.stringValue = NSString(format:"%2X", rotA)
             inputFeld.intValue = Int32(rotA)
             
@@ -251,7 +351,7 @@ class ViewController: NSViewController
          
          
          
-         //var tempbyteArray = [UInt8](count: 64, repeatedValue: 0x00)
+         //var tempbyteArray = [UInt8](count: 32, repeatedValue: 0x00)
          /*
          print("teensy read_byteArray: ")
          for  i in 0...16
@@ -323,15 +423,16 @@ class ViewController: NSViewController
    
    @IBAction func check_USB(sender: NSButton)
    {
-      var erfolg = teensy.USBOpen()
+      let erfolg = teensy.USBOpen()
       usbstatus = erfolg
-      println("USBOpen erfolg: \(erfolg) usbstatus: \(usbstatus)")
+      print("USBOpen erfolg: \(erfolg) usbstatus: \(usbstatus)")
       
       if (rawhid_status()==1)
       {
-         println("status 1")
-         USB_OK.backgroundColor = NSColor.greenColor()
-         
+        // NSBeep()
+         print("status 1")
+         USB_OK.textColor = NSColor.greenColor()
+         USB_OK.stringValue = "OK";
          manufactorer.stringValue = "Manufactorer: " + teensy.manufactorer()!
          
          Teensy_Status.enabled = true;
@@ -343,8 +444,9 @@ class ViewController: NSViewController
       else
          
       {
-         println("status 0")
-         USB_OK.backgroundColor = NSColor.redColor()
+         print("status 0")
+         USB_OK.textColor = NSColor.redColor()
+        USB_OK.stringValue = "X";
          Teensy_Status.enabled = false;
          start_read_USB_Knopf.enabled = false;
          stop_read_USB_Knopf.enabled = false;
@@ -352,12 +454,12 @@ class ViewController: NSViewController
          stop_write_USB_Knopf.enabled = false;
 
       }
-      println("antwort: \(teensy.status())")
+      print("antwort: \(teensy.status())")
    }
    
    @IBAction func stop_read_USB(sender: AnyObject)
    {
-      //teensy.read_OK = false
+      teensy.read_OK = false
       usb_read_cont = false
       
       
@@ -449,7 +551,7 @@ class ViewController: NSViewController
       */
       
       var timer : NSTimer? = nil
-      timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("cont_write_USB:"), userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(ViewController.cont_write_USB(_:)), userInfo: nil, repeats: true)
 
    }
    
@@ -466,15 +568,23 @@ class ViewController: NSViewController
       //println("teensycode vor: \(teensycode)")
       
       teensycode |= UInt8((codeFeld.intValue)%0x0f)
-      println("teensycode: \(teensycode)")
+      print("teensycode: \(teensycode)")
       teensy.write_byteArray[15] = teensycode
       teensy.write_byteArray[0] = UInt8((codeFeld.intValue)%0xff)
       
       teensy.write_byteArray[1] = UInt8((data0.intValue)%0xff)
+      teensy.write_byteArray[2] = UInt8((data0.intValue)%0xff)
+      teensy.write_byteArray[3] = UInt8((data0.intValue)%0xff)
+      
+      print("spannungsanzeige: \(spannungsanzeige.intValue)")
+      
+      teensy.write_byteArray[8] = UInt8((spannungsanzeige.intValue)%0xff);
+      teensy.write_byteArray[9] = UInt8(((spannungsanzeige.intValue)>>8)%0xff);
+      //print("spannungsanzeige high: \(spannungsanzeige.intValue)")
       
       var c0 = codeFeld.intValue + 1
       //codeFeld.intValue = c0
-      var c1 = data0.intValue + 1
+      let c1 = data0.intValue + 1
       data0.intValue = c1
       
       var senderfolg = teensy.send_USB()

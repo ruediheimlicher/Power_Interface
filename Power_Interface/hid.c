@@ -225,7 +225,12 @@ int getX()
 //
 int rawhid_send(int num, void *buf, int len, int timeout)
 {
-   //fprintf(stderr,"rawhid_send num: %d\n",num);
+   //char* 	*reportData;
+   const uint8_t* 	reportData;
+   reportData = malloc (64);
+   
+
+   fprintf(stderr,"rawhid_send num: %d  len: %d\n",num,len);
 	hid_t *hid;
 	int result=-100;
    
@@ -234,9 +239,19 @@ int rawhid_send(int num, void *buf, int len, int timeout)
    //fprintf(stderr,"rawhid_send A\n");
 #if 1
 #warning "Send timeout not implemented on MACOSX"
-	IOReturn ret = IOHIDDeviceSetReport(hid->ref, kIOHIDReportTypeOutput, 0, buf, len);
+   uint8_t report[64] = {0x0};
+   
+   //http://opensource.apple.com/tarballs/IOUSBFamily/
+   IOReturn ret = IOHIDDeviceSetReport(hid->ref, kIOHIDReportTypeOutput, 0, reportData, len);
+
+  // IOReturn rettestB = IOHIDDeviceSetReport(hid->ref, kIOHIDReportTypeOutput, 0, report, len);
+
+	//IOReturn ret = IOHIDDeviceSetReport(hid->ref, kIOHIDReportTypeOutput, 0, buf, len);
+   
+   
 	result = (ret == kIOReturnSuccess) ? len : -1;
-   //fprintf(stderr,"rawhid_send B result: %d\n",result);
+   
+   fprintf(stderr,"rawhid_send B ret: %d  result: %d\n",ret, result);
 #endif
 #if 0
 	// No matter what I tried this never actually sends an output
@@ -267,6 +282,7 @@ int rawhid_send(int num, void *buf, int len, int timeout)
 	}
 #endif
    //fprintf(stderr,"rawhid_send result: %d\n",result);
+   free (reportData);
 	return result;
 }
 
